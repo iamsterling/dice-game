@@ -1,0 +1,32 @@
+@import "dice.css";
+
+
+:root {
+    --color-primary: #63E0CD;
+
+    --color-dark: #282A34;
+}
+
+body {
+    background: #282A34;
+    position: relative;
+
+    color: white;
+
+    margin: 0 auto;
+    max-width: 900px;
+
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 12rem;
+
+    grid-template-areas: 
+    ". dice dice dice ."
+    "results results results results button";
+}
+
+
+button {
+    grid-area: button;
+}

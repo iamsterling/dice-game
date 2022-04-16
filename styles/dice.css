@@ -1,0 +1,148 @@
+:root {
+    --dice-rotate-x: 0deg;
+    --dice-rotate-y: 45deg;
+    --dice-rotate-z: 45deg;
+    --dice-scale: 0.8, 0.8,0.8;
+    --dice-dimensions: 8rem;
+}
+
+.section-dice {
+    width: 100%;
+    grid-area: dice;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-dice .container {
+    margin: 2rem;
+    margin-bottom: 4rem;
+}
+.dice {
+    width: var(--dice-dimensions);
+    height: var(--dice-dimensions);
+    margin: 2rem;
+    transform-style: preserve-3d;
+    perspective-origin: center;
+    transform: 
+        perspective(100vh)
+        rotateX(var(--dice-rotate-x)) 
+        rotateY(var(--dice-rotate-y))
+        rotateZ(var(--dice-rotate-z))
+        scale3d(var(--dice-scale))
+        ;
+    transition: all linear 0.7s;
+
+
+    
+    
+}
+
+
+.side{
+    position: absolute;
+    background: white;
+    color: black;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    border: 2px solid var(--color-dark);
+}
+.side::after {
+    content: '....';
+    display: block;
+    top: 0;
+    position: absolute;
+    background: var(--color-dark);
+    opacity: 0.2;
+    height: 100%;
+    width: 100%;
+}
+.side .active::after {
+    opacity: 0;
+}
+
+.front {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    height: 100%;
+    width: 100%;
+
+    line-height: 0;
+
+
+    transform: rotateY(0deg) translateZ(calc(var(--dice-dimensions) / 2));
+}
+.back {
+    transform: rotateY(180deg) translateZ(calc(var(--dice-dimensions) / 2));
+    
+}
+.top {
+    transform: rotateX(90deg) translateZ(calc(var(--dice-dimensions) / 2));
+    
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--dice-dimensions) / 2));
+    
+}
+
+.left {
+    transform: rotateY(90deg) translateZ(calc(var(--dice-dimensions) / 2));
+}
+.right {
+    transform: rotateY(-90deg) translateZ(calc(var(--dice-dimensions) / 2));
+}
+
+
+
+.section-dice button {
+    width: fit-content;
+    padding: 0.5rem 2rem;
+    border: 0;
+    border-radius: 2rem;
+
+    margin-top: 2rem;
+
+
+    background: var(--color-primary);
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+
+
+.result-container {
+    height: 4rem;
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    margin-bottom: 4rem;
+    grid-area: results;
+}
+
+.result {
+    height: 8rem;
+    width: fill-available;
+    background: #FFFFFF08;
+    margin-right: 1rem;
+
+    border-radius: 1rem;
+    border: 1px solid #FFFFFF30;
+    padding:1rem;
+    grid-column: span 1;
+    grid-row: 2/-1;
+
+}
+.result:last-of-type {
+    margin-right: 0;
+}
+
+.result:disabled {
+    opacity: 0.2;
+}
